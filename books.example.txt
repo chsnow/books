@@ -1,0 +1,5 @@
+# One book per line: "Title | Author". Lines starting with # are ignored.
+Project Hail Mary | Andy Weir
+Dungeon Crawler Carl | Matt Dinniman
+Piranesi | Susanna Clarke
+Children of Time | Adrian Tchaikovsky
