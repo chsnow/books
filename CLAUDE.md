@@ -1,11 +1,12 @@
 # CLAUDE.md — how to use this repo
 
 This repo holds one tool: `check_books.py`. It answers "can the user borrow this book for
-free, and from where?" for the user's three free sources:
+free, and from where?" for the user's free sources:
 
-1. **Kindle Unlimited** (the user is a subscriber)
-2. **Libby — San Jose Public Library** (`sanjose`)
-3. **Libby — Santa Clara County Library** (`santaclara`)
+1. **Kindle Unlimited** (assume the user has a subscription)
+2. **Libby** at each library configured in the `LIBRARIES` list at the top of `check_books.py`
+   (the checked-in defaults are two example California systems; the user may have swapped in
+   their own — read the list rather than assuming which libraries are present)
 
 ## The workflow when the user asks for book recommendations
 
@@ -44,7 +45,8 @@ free, and from where?" for the user's three free sources:
 * Zero dependencies; Python 3.8+. Nothing to install.
 * Amazon calls are sequential with a ~1–2 s polite delay and cached for 6 h in `.cache/`
   (git-ignored). 10 books ≈ 20–30 s. Libby calls are parallel and fast.
-* Libraries are configured in the `LIBRARIES` list at the top of `check_books.py`.
+* Libraries are configured in the `LIBRARIES` list at the top of `check_books.py`; OverDrive keys
+  can be looked up with `https://thunder.api.overdrive.com/v2/libraries?query=<library name>`.
 * Quick self-test that exercises every code path (KU hit, KU miss, Lucky Day, long wait, not owned):
 
   ```bash
